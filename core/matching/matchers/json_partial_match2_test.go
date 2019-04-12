@@ -66,6 +66,7 @@ func Test2True(t *testing.T) {
 }`,
 		`
 {
+  "something": "value_of_something",
   "followme_struct": [
     3,
     [

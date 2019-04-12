@@ -26,13 +26,11 @@ func getAllNodesFromMap(current map[string]interface{}) []map[string]interface{}
 
 	allNodes = append(allNodes, current)
 
-	for key, val := range current {
+	for _, val := range current {
 		if innerMap, ok := val.(map[string]interface{}); ok {
 			allNodes = append(allNodes, getAllNodesFromMap(innerMap)...)
 		} else if innerArray, ok := val.([]interface{}); ok {
 			allNodes = append(allNodes, getAllNodesFromArray(innerArray)...)
-		} else {
-
 		}
 	}
 	return allNodes
@@ -46,8 +44,6 @@ func getAllNodesFromArray(current []interface{}) []map[string]interface{} {
 			allNodes = append(allNodes, getAllNodesFromMap(innerMap)...)
 		} else if innerArray, ok := val.([]interface{}); ok {
 			allNodes = append(allNodes, getAllNodesFromArray(innerArray)...)
-		} else {
-
 		}
 	}
 	return allNodes
